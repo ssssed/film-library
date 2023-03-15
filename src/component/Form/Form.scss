@@ -1,0 +1,22 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+
+  &__input {
+    padding: 5px 10px;
+    border-radius: 8px;
+    border: 1px solid lightgray;
+  }
+
+  button {
+    padding: 8px 12px;
+    background-color: transparent;
+    border: 1px solid lightgray;
+    border-radius: 8px;
+    text-transform: uppercase;
+  }
+}

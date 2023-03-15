@@ -1,0 +1,10 @@
+
+.films {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 35px 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 300px);
+  gap: 10px;
+}
