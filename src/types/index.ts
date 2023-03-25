@@ -18,7 +18,7 @@ export interface IFilm {
   compositor: string;
   budget: number;
   collections: number; // cборы
-  ageRating: '18+' | '16+' | '12+' | '0+';
+  ageRating: '18+' | '16+' | '12+' | '6+' | '0+';
   duration: number;
   image: string;
   rating: number;

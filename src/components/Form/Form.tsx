@@ -72,6 +72,9 @@ const Form: FC<IForm> = ({films, handleUpdateFilms}) => {
     if (isValid) setRating(+e.target.value);
   }
 
+  const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) =>
+    setDateRelease(new Date(e.target.value));
+
   const handleSubmitForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     handleUpdateFilms([...films, {
@@ -92,9 +95,6 @@ const Form: FC<IForm> = ({films, handleUpdateFilms}) => {
       rating,
       dateRelease,
     }])
-  }
-
-  const handleValidateText = (text: string) => {
   }
 
   return (
@@ -136,11 +136,12 @@ const Form: FC<IForm> = ({films, handleUpdateFilms}) => {
         <option value="18+">18+</option>
         <option value='16+'>16+</option>
         <option value='12+'>12+</option>
+        <option value='12+'>6+</option>
         <option value='0+'>0+</option>
       </select>
       <input className="form__input" placeholder="Длительность" value={duration} onChange={handleDurationChange}
              required={true}/>
-      <input className="form__input" type="date" placeholder="Дата выхода" required={true}/>
+      <input className="form__input" type="date" placeholder="Дата выхода" onChange={handleDateChange} required={true}/>
       <input className="form__input" placeholder="Постер" value={image} onChange={handleImageChange} required={true}/>
       <button type="submit">добавить фильм</button>
     </form>

@@ -29,11 +29,13 @@ const Film: FC<IFilmProps> = (props) => {
         src={image}
         alt={title}
       />
-      <h4 className='film__title'>Название: {title}</h4>
-      <h4 className='film__title'>Жанр: {genre.join(',')}</h4>
-      <h4 className='film__title'>Возрастной рейтинг: {ageRating}</h4>
-      <h4 className='film__title'>Продюсер: {producer}</h4>
-      <h4 className='film__title'>Длительность: {duration}</h4>
+      <div className="film__container">
+        <h4 className='film__title'>Название: {title}</h4>
+        <h4 className='film__title'>Жанр: {genre.join(',')}</h4>
+        <h4 className='film__title'>Возрастной рейтинг: {ageRating}</h4>
+        <h4 className='film__title'>Продюсер: {producer}</h4>
+        <h4 className='film__title'>Длительность: {duration}</h4>
+      </div>
     </div>
   );
 };
