@@ -2,8 +2,11 @@ import React, {FC, useState} from 'react';
 import './Form.scss';
 import {Genre, IForm} from "../../types";
 import {useValidate} from "../../hook/useValidate";
+import {useNavigate} from "react-router-dom";
 
 const Form: FC<IForm> = ({films, handleUpdateFilms}) => {
+  // Навигация
+  const navigate = useNavigate();
   // Инициализация переменных
   const [title, setTitle] = useState<string>('');
   const [country, setCountry] = useState<string>('');
@@ -64,8 +67,7 @@ const Form: FC<IForm> = ({films, handleUpdateFilms}) => {
     if (isValid) setDuration(+e.target.value);
   }
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const isValid = useValidate(e.target.value);
-    if (isValid) setImage(e.target.value);
+    setImage(e.target.value);
   }
   const handleRatingChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const isValid = useValidate(e.target.value, {isNumber: true});
@@ -95,10 +97,12 @@ const Form: FC<IForm> = ({films, handleUpdateFilms}) => {
       rating,
       dateRelease,
     }])
+    navigate("/films");
   }
 
   return (
     <form className="form" onSubmit={handleSubmitForm}>
+      <h1 style={{textAlign: 'center'}}>Добавить фильм</h1>
       <input className="form__input" placeholder="Название" value={title} onChange={handleTitleChange} required={true}
       />
       <input className="form__input" placeholder="Страна" value={country} onChange={handleCountryChange}

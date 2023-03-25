@@ -5,11 +5,11 @@ import Film from "../FIlm/Film";
 
 const Films: FC<IFilms> = ({films, handleDelete}) => {
   return (
-    <div className="films">
-      {
-        films.map((film) => <Film key={film.id} film={film} handleDelete={handleDelete}/>)
-      }
-    </div>
+      <div className="films">
+        {
+          films.map((film) => <Film key={film.id} film={film} handleDelete={handleDelete}/>)
+        }
+      </div>
   );
 };
 
