@@ -1,0 +1,21 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+
+  &__logo {
+    width: 48px;
+    height: 48px;
+  }
+
+  &__nav {
+    display: flex;
+    gap: 10px;
+
+    &-link {
+      text-decoration: none;
+      color: black;
+      font-size: 18px;
+    }
+  }
+}
