@@ -1,13 +1,16 @@
 interface IValidateOptions {
-  isNumber?: boolean,
-  isString?: boolean,
-  isList?: boolean,
+  isNumber?: boolean;
+  isString?: boolean;
+  isList?: boolean;
 }
 
-export const useValidate = (value: string, options: IValidateOptions = {isString: true}) => {
+export const useValidate = (
+  value: string,
+  options: IValidateOptions = { isString: true }
+) => {
   if (options.isString) {
     if (!value) return true;
-    return /^[a-zA-Z]+$/.test(value);
+    return /^[a-zA-Zа-яА-ЯёЁ ]+$/.test(value);
   }
   if (options.isNumber) {
     if (!value) return true;
@@ -15,6 +18,6 @@ export const useValidate = (value: string, options: IValidateOptions = {isString
   }
   if (options.isList) {
     if (!value) return true;
-    return /^[a-zA-Z, ]+$/.test(value)
+    return /^[a-zA-Zа-яА-ЯёЁ, ]+$/.test(value);
   }
-}
+};
