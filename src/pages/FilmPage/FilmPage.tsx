@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import Comments from "../../components/Comments/Comments";
 import CreateComment from "../../components/CreateComment/CreateComment";
 import { IFilm, IFilmPageProps } from "../../types";
 import "./FilmPage.scss";
@@ -40,12 +41,7 @@ const FilmPage: FC<IFilmPageProps> = ({ selectedFilm, updateSelectedFilm }) => {
           </p>
         </div>
       </div>
-      <h2>Комментарии</h2>
-      <div className="comments">
-        {selectedFilm.comments.map((comment) => (
-          <div key={comment.id}>{comment.message}</div>
-        ))}
-      </div>
+      <Comments comments={selectedFilm.comments} />
       <CreateComment selectedFilm={selectedFilm} addComments={addComments} />
     </React.Fragment>
   );
