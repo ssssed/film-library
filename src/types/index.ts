@@ -6,10 +6,11 @@ export type Genre =
   | "фантастика"
   | "мультфильм";
 
-export type Comment = {
+export type IComment = {
   id: number;
   message: string;
   time: Date;
+  rating: number;
 };
 
 export interface IFilm {
@@ -29,7 +30,7 @@ export interface IFilm {
   image: string;
   rating: number;
   dateRelease: Date;
-  comments: Comment[];
+  comments: IComment[];
 }
 
 export interface IForm {
@@ -72,5 +73,5 @@ export interface ICreateCommentProps {
 }
 
 export interface ICommentsProps {
-  comments: Comment[];
+  comments: IComment[];
 }
