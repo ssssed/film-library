@@ -24,9 +24,9 @@ const App: React.FC = () => {
   const handleSearch = (search: string) => {
     const filtered = films.filter(
       (film) =>
-        film.title.includes(search) ||
-        film.compositor.includes(search) ||
-        film.producer.includes(search) ||
+        film.title.toLowerCase().includes(search.toLowerCase()) ||
+        film.compositor.toLowerCase().includes(search.toLowerCase()) ||
+        film.producer.toLocaleString().includes(search.toLowerCase()) ||
         film.genre.includes(search as Genre) ||
         film.ageRating.includes(search)
     );
