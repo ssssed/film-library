@@ -7,12 +7,15 @@ import FilmPage from "../pages/FilmPage/FilmPage";
 import FilmsPage from "../pages/FilmsPage/FilmsPage";
 import "./App.scss";
 import Header from "./Header/Header";
+import { useSessionStorage } from "../hook/useSessionStorage";
 
 const App: React.FC = () => {
   // Навигация
   const navigate = useNavigate();
   // Инициализирую глобальную переменную с фильмами
   const [localStorage, setLocalStorage] = useLocalStorage("films");
+  const [sessionStorage, setSessionStorage] =
+    useSessionStorage("selected-film");
   const [films, setFilms] = useState<IFilm[]>(localStorage);
   const [filteredFilms, setFilteredFilms] = useState<IFilm[]>(films);
   const [searchFilter, setSearchFilter] = useState<string>("any");
@@ -41,10 +44,11 @@ const App: React.FC = () => {
     }
   };
 
-  const [selectedFilm, setSelectedFilm] = useState<IFilm>(null);
+  const [selectedFilm, setSelectedFilm] = useState<IFilm>(sessionStorage);
 
   const handleSelectFilm = (selectedFilm: IFilm) => {
     setSelectedFilm(selectedFilm);
+    setSessionStorage(selectedFilm);
     console.log(selectedFilm);
   };
 
