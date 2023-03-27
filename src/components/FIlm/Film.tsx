@@ -12,7 +12,10 @@ const Film: FC<IFilmProps> = (props) => {
     handleSelectFilm(film);
     navigate("/film");
   };
-  const handleDeleteCurrentFilm = () => handleDelete(id);
+  const handleDeleteCurrentFilm = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    handleDelete(id);
+  };
   return (
     <div className="film" onClick={handleSelectCurrentFilm}>
       <button className="film__delete" onClick={handleDeleteCurrentFilm}>
