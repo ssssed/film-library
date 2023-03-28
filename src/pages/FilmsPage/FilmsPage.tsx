@@ -6,7 +6,6 @@ import { IFilmsPageProps } from "../../types";
 const FilmsPage: FC<IFilmsPageProps> = ({
   handleSearch,
   handleDelete,
-  handleNavigate,
   filteredFilms,
   handleSelectFilm,
 }) => {
@@ -19,7 +18,6 @@ const FilmsPage: FC<IFilmsPageProps> = ({
         handleSelectFilm={handleSelectFilm}
         films={filteredFilms}
       />
-      <button onClick={handleNavigate}>Назад</button>
     </React.Fragment>
   );
 };

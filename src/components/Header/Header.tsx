@@ -6,11 +6,10 @@ import "./Header.scss";
 const Header = () => {
   return (
     <header className="header">
-      <img className="header__logo" src={logo} alt="logo" />
+      <Link to="/">
+        <img className="header__logo" src={logo} alt="logo" />
+      </Link>
       <nav className="header__nav">
-        <Link to="/" className="header__nav-link">
-          Главная
-        </Link>
         <Link to="/films" className="header__nav-link">
           Мои Фильмы
         </Link>
