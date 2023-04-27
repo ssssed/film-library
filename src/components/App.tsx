@@ -62,6 +62,7 @@ const App: React.FC = () => {
     if (findedFilm) {
       findedFilm.comments = [...film.comments];
       setLocalStorage(localStorage);
+      setSessionStorage(findedFilm);
     }
   };
 

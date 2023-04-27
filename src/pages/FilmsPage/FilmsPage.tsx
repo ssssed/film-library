@@ -2,6 +2,7 @@ import React, { FC, useMemo, useState } from "react";
 import Films from "../../components/Films/Films";
 import Search from "../../components/Search/Search";
 import { IFilmsPageProps } from "../../types";
+import "./FilmsPage.scss";
 
 const FilmsPage: FC<IFilmsPageProps> = ({
   handleSearch,
@@ -10,17 +11,28 @@ const FilmsPage: FC<IFilmsPageProps> = ({
   handleSelectFilm,
 }) => {
   const [isSorted, setSorted] = useState<boolean>(false);
-  const handleSortedFilms = () => setSorted(!isSorted);
+  const [sortedName, setSortedName] = useState<"rating" | "duration" | "id">(
+    "rating"
+  );
+  const handleSortedFilms = (e: React.MouseEvent) => {
+    setSorted(!isSorted);
+    setSortedName(e.currentTarget.id as "rating" | "duration" | "id");
+  };
 
   const sortedFilms = useMemo(() => {
-    if (isSorted) return filteredFilms.sort((a, b) => b.rating - a.rating);
+    if (isSorted)
+      return filteredFilms.sort((a, b) => b[sortedName] - a[sortedName]);
     return filteredFilms;
-  }, [isSorted, filteredFilms]);
+  }, [isSorted, filteredFilms, sortedName]);
   return (
     <React.Fragment>
       <h1 style={{ textAlign: "center" }}>Фильмы</h1>
       <Search handleSearch={handleSearch} />
-      <button onClick={handleSortedFilms}>Отфильтровать по рейтингу</button>
+      <button id="rating" onClick={handleSortedFilms}>
+        Отфильтровать по рейтингу
+      </button>
+      <button id="duration">Сортировать по длительности</button>
+      <button id="id">Сортировать по новизне добавления на сайт</button>
       <Films
         handleDelete={handleDelete}
         handleSelectFilm={handleSelectFilm}
